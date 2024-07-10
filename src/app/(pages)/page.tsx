@@ -1,4 +1,4 @@
-import photo from "@/../public/assets/domain/image.svg";
+import React from "react";
 import collegeImg from "@/../public/assets/faculty/college-image.svg";
 import EventCard from "@/components/EventCard";
 import FacultySection from "@/components/FacultySection";
@@ -7,6 +7,7 @@ import Button from "@/components/common/Button";
 import Image from "next/image";
 import { domainFirstLine, domainSecondLine } from "../../../public/data/domain";
 import { events } from "../../../public/data/upcomingEvent";
+import DomainRow from "@/components/DomainRow";
 
 import {
   boardMembers,
@@ -14,7 +15,6 @@ import {
   coordinators,
 } from "@/../public/data/people";
 import ContactSection from "@/components/ContactSection";
-import DomainDisplay from "@/components/DomainDisplay";
 import Faqs from "@/components/Faqs";
 import ProjectSection from "@/components/ProjectSection";
 import TeamSection from "@/components/TeamSection";
@@ -31,14 +31,14 @@ export default function Home() {
         id="hero"
         className="w-11/12 mx-auto p-5 sm:pt-11 max-w-[110rem] pt-36"
       >
-        <div className="flex flex-col-reverse md:items-center md:flex-row gap-10">
-          <div className="md:w-3/5 flex flex-col gap-5">
+        <div className="-mt-10 flex flex-col-reverse md:items-center lg:flex-row gap-10 md:mt-10">
+          <div className="lg:w-3/5 flex flex-col gap-5">
             <h1
-              className={`font-extrabold text-2xl sm:text-4xl ${turret.className} myShadow text-primary-heading`}
+              className={`font-extrabold text-2xl sm:text-4xl xl:text-5xl ${turret.className} myShadow text-primary-heading`}
             >
               Abhyudaya - Coding club
             </h1>
-            <p className="text-base sm:text-xl lg:text-2xl">
+            <p className="pl-4 text-base sm:text-xl ">
               The SVITS Coding Club offers students a dynamic platform to learn,
               practice, and excel in coding. it welcomes individuals of all
               skill levels. Through engaging in coding competitions, hackathons,
@@ -49,13 +49,8 @@ export default function Home() {
               and technology.
             </p>
           </div>
-          <div className="lg:w-2/5">
-            <Image
-              loading="lazy"
-              src={photo}
-              alt="abhyudaya"
-              className="h-auto w-full"
-            />
+          <div className="sm:mt-5  lg:w-3/5 xl:w-2/5">
+            <video src='./intro.mp4' className="" autoPlay loop muted></video>
           </div>
         </div>
         <SectionDividerLine className="" />
@@ -67,7 +62,9 @@ export default function Home() {
       >
         <h1 className="text-2xl sm:text-4xl font-bold">Our Domains</h1>
         <div className="flex lg:flex-col z-10 mt-10 w-full mx-auto justify-center items-center gap-5 mb-2">
-          <DomainDisplay />
+        <DomainRow domainArr={domainFirstLine} />
+        <DomainRow domainArr={domainSecondLine} />
+        
         </div>
         <Button text="View More" rounded={true} linkTo="/" />
         <SectionDividerLine />

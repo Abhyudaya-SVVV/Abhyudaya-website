@@ -17,7 +17,7 @@ const DomainCard = ({ domain }: DomainCardProps) => {
         src={domain.img}
         alt={domain.name}
       />
-      <div className="bg-white text-black rounded-b-lg w-full px-5 sm:py-2 lg:py-4 opacity-40">
+      <div className="bg-rich-blue-lightLine text-black rounded-b-lg w-full px-5 sm:py-2 lg:py-4 opacity-40">
         <p className="text-center">{domain.name}</p>
       </div>
     </div>
