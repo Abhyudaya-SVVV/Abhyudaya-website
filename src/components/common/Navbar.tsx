@@ -34,7 +34,7 @@ const Navbar = () => {
             <Link
               href={item?.path}
               key={idx}
-              className="px-8 py-8 text-[#EEE] hover:text-[#fff] hover:scale-125  text-nowrap transition-all duration-200 ease-in-out"
+              className="px-4 text-[#EEE] hover:text-[#fff] hover:scale-125  text-nowrap transition-all duration-200 ease-in-out"
             >
               {item?.title}
             </Link>
