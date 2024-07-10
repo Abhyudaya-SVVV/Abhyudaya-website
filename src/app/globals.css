@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #afb2bf;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000814;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #afb2bf;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+*:active::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb,
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.myShadow {
+  filter: drop-shadow(5px 2px 5px #ebff00);
+}
+
+/* .shapeAtDomain{
+  position: absolute;
+    width: 1250px;
+    height: 618px;
+    top: 131px;
+    left: 57px;
+    background: linear-gradient(to right, #00AAB8,#00AAB8);
+    filter: blur(34px);
+    opacity: 0.5;
+    border-radius: 999px;
+    
+} */
