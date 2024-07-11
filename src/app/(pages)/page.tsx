@@ -31,14 +31,14 @@ export default function Home() {
         id="hero"
         className="w-11/12 mx-auto p-5 sm:pt-11 max-w-[110rem] pt-36"
       >
-        <div className="-mt-10 flex flex-col-reverse md:items-center lg:flex-row gap-10 md:mt-10">
+        <div className="-mt-10 flex flex-col-reverse md:items-center lg:flex-row gap-10 lg:mt-10">
           <div className="lg:w-3/5 flex flex-col gap-5">
             <h1
               className={`font-extrabold text-2xl sm:text-4xl xl:text-5xl ${turret.className} myShadow text-primary-heading`}
             >
               Abhyudaya - Coding club
             </h1>
-            <p className="pl-4 text-base sm:text-xl ">
+            <p className="pl-4 text-base sm:text-xl ">  
               The SVITS Coding Club offers students a dynamic platform to learn,
               practice, and excel in coding. it welcomes individuals of all
               skill levels. Through engaging in coding competitions, hackathons,
@@ -53,26 +53,28 @@ export default function Home() {
             <video src='./intro.mp4' className="" autoPlay loop muted></video>
           </div>
         </div>
+        <div className="md:h-10"></div>
         <SectionDividerLine className="" />
       </section>
 
       <section
         id="domain"
-        className="relative w-11/12 mx-auto p-5 pt-11 flex flex-col items-center "
+        className="relative w-11/12 mx-auto p-5  flex flex-col items-center "
       >
-        <h1 className="text-2xl sm:text-4xl font-bold">Our Domains</h1>
+        <div className="z-50 ">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center">Our Domains</h1>
         <div className="flex lg:flex-col z-10 mt-10 w-full mx-auto justify-center items-center gap-5 mb-2">
         <DomainRow domainArr={domainFirstLine} />
         <DomainRow domainArr={domainSecondLine} />
         
         </div>
-        <Button text="View More" rounded={true} linkTo="/" />
-        <SectionDividerLine />
-        <div className="shapeAtDomain"></div>
+        </div>
+        <div className="-mt-[75vh] h-[80vh] w-full blur-3xl opacity-60 bg-cyan-700 rounded-full"></div>
       </section>
+
       <section
         id="events"
-        className="w-10/12 mx-auto px-3 flex flex-col items-center gap-9"
+        className="w-10/12 mx-auto px-3 flex flex-col items-center gap-9 sm:mt-10"
       >
         <h1 className={`text-4xl font-extrabold ${turret.className}`}>
           Upcoming Events
