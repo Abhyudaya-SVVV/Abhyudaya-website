@@ -38,7 +38,7 @@ export default function Home() {
             >
               Abhyudaya - Coding club
             </h1>
-            <p className="pl-4 text-base sm:text-xl ">  
+            <p className="pl-4 text-base sm:text-xl ">
               The SVITS Coding Club offers students a dynamic platform to learn,
               practice, and excel in coding. it welcomes individuals of all
               skill levels. Through engaging in coding competitions, hackathons,
@@ -50,7 +50,7 @@ export default function Home() {
             </p>
           </div>
           <div className="sm:mt-5  lg:w-3/5 xl:w-2/5">
-            <video src='./intro.mp4' className="" autoPlay loop muted></video>
+            <video src="./intro.mp4" className="" autoPlay loop muted></video>
           </div>
         </div>
         <div className="md:h-10"></div>
@@ -61,13 +61,16 @@ export default function Home() {
         id="domain"
         className="relative w-11/12 mx-auto p-5  flex flex-col items-center "
       >
-        <div className="z-50 ">
-        <h1 className="text-2xl sm:text-4xl font-bold text-center">Our Domains</h1>
-        <div className="flex lg:flex-col z-10 mt-10 w-full mx-auto justify-center items-center gap-5 mb-2">
-        <DomainRow domainArr={domainFirstLine} />
-        <DomainRow domainArr={domainSecondLine} />
-        
-        </div>
+        <div className="z-10 ">
+          <h1
+            className={`text-4xl font-extrabold text-center ${turret.className}`}
+          >
+            Our Domains
+          </h1>
+          <div className="flex lg:flex-col z-10 mt-10 w-full mx-auto justify-center items-center gap-5 mb-2">
+            <DomainRow domainArr={domainFirstLine} />
+            <DomainRow domainArr={domainSecondLine} />
+          </div>
         </div>
         <div className="-mt-[75vh] h-[80vh] w-full blur-3xl opacity-60 bg-cyan-700 rounded-full"></div>
       </section>
@@ -143,8 +146,6 @@ export default function Home() {
         <Faqs />
         <SectionDividerLine />
       </section>
-      {/* 
-      <ContactSection /> */}
     </main>
   );
 }
