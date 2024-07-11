@@ -3,6 +3,7 @@ import UIUX from "./../assets/domain/UiUx.svg";
 import android from "./../assets/domain/android.svg";
 import cloud from "./../assets/domain/cloud.svg";
 import python from "./../assets/domain/python.svg";
+import web3 from './../assets/domain/web3.svg'
 import webdev from "./../assets/domain/webDev.svg";
 
 export const domainFirstLine: Array<{ id: number; name: string; img: string }> =
@@ -27,8 +28,8 @@ export const domainSecondLine: Array<{
 }> = [
   {
     id: 4,
-    name: "Python",
-    img: python,
+    name: "WEB3",
+    img: web3,
   },
   {
     id: 5,
