@@ -14,7 +14,6 @@ import {
   collegeManagement,
   coordinators,
 } from "@/../public/data/people";
-import ContactSection from "@/components/ContactSection";
 import Faqs from "@/components/Faqs";
 import ProjectSection from "@/components/ProjectSection";
 import TeamSection from "@/components/TeamSection";
@@ -146,6 +145,7 @@ export default function Home() {
         <Faqs />
         <SectionDividerLine />
       </section>
+
     </main>
   );
 }

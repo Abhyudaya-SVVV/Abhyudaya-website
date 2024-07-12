@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import svvvLogo from "@/../public/assets/header/SVVV.svg";
-import AbhyudayaLogo from "@/../public/assets/abhyudaya-logo.svg";
+import AbhyudayaLogo from "@/../public/assets/header/abhyudaya-logo.svg";
 import Image from "next/image";
 import { navData } from "../../../public/data/navData";
 import Link from "next/link";
 import { FiAlignJustify, FiX } from "react-icons/fi";
 import { FaTimes } from "react-icons/fa";
+
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
   const toggleModel = () => {
@@ -59,10 +60,10 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        <button className="hidden lg:block relative px-4 py-2 text-2xl font-bold text-white rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300 ease-in-out shadow-lg">
+        <Link href='/contact' className="hidden lg:block relative px-4 py-2 text-2xl font-bold text-white rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300 ease-in-out shadow-lg">
           <span className="relative z-10">Contact us</span>
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-500 blur-lg opacity-75 animate-pulse"></div>
-        </button>
+        </Link>
       </div>
     </nav>
   );
