@@ -10,8 +10,7 @@ type EventCardProps = {
 const EventCard = ({ heading, desc, img }: EventCardProps) => {
   return (
     <div className="flex gap-8 lg:gap-20 justify-center items-center lg:items-start flex-col lg:flex-row">
-      <h1
-        className={`block lg:hidden font-extrabold border-4 text-xl md:text-3xl border-rich-blue-border border-opacity-70 px-6 md:px-16 py-2 text-center rounded-2xl `}
+      <h1 className={`block lg:hidden font-extrabold border-4 text-xl md:text-3xl border-rich-blue-border border-opacity-70 px-6 md:px-16 py-2 text-center rounded-2xl `}
       >
         {heading}
       </h1>
