@@ -9,23 +9,19 @@ interface FacultyCardProp {
 
 const FacultyCard = ({ person, isTopMgmt }: FacultyCardProp) => {
   const { img, name, post } = person;
-  const imgClass = cx({
-    "mb-0": true,
-    "min-w-64": isTopMgmt,
-  });
+  const minWclass = isTopMgmt ? "sm:min-w-[300px] sm:min-h-[400px]" : "sm:min-w-[150px] sm:min-h-[350px]";
 
   return (
-    <div className="flex flex-col items-center w-4/5 md:w-auto xl:w-64 gap-1">
+    <div className={`flex flex-col items-center  xl:w-64 gap-1  h-[26vw] min-h-[250px]  w-[35vw] text-sm ${minWclass}`} >
       <div className="border-[#194EEF] border-4 overflow-hidden rounded-3xl">
         <Image
           src={img}
-          className={`${imgClass} h-full`}
           alt="coordinator-img"
         />
       </div>
-      <h2 className={`${turret.className} text-2xl font-semibold`}>{name}</h2>
-      <p>{post}</p>
-    </div>
+      <h2 className={`${turret.className} font-semibold text-center`}>{name}</h2>
+      <p className="text-center">{post}</p>
+      </div>
   );
 };
 
