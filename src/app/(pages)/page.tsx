@@ -1,14 +1,14 @@
 import React from "react";
+import Image from "next/image";
+import { Turret_Road } from "next/font/google";
 import collegeImg from "@/../public/assets/faculty/college-image.svg";
 import EventCard from "@/components/EventCard";
 import FacultySection from "@/components/FacultySection";
 import SectionDividerLine from "@/components/SectionDividerLine";
 import Button from "@/components/common/Button";
-import Image from "next/image";
 import { domainFirstLine, domainSecondLine } from "../../../public/data/domain";
 import { events } from "../../../public/data/upcomingEvent";
 import DomainRow from "@/components/DomainRow";
-
 import {
   boardMembers,
   collegeManagement,
@@ -17,7 +17,8 @@ import {
 import Faqs from "@/components/Faqs";
 import ProjectSection from "@/components/ProjectSection";
 import TeamSection from "@/components/TeamSection";
-import { Turret_Road } from "next/font/google";
+import { Domain } from "domain";
+
 export const turret = Turret_Road({
   weight: "800",
   subsets: ["latin"],
@@ -25,127 +26,115 @@ export const turret = Turret_Road({
 
 export default function Home() {
   return (
-    <main className="bg-rich-blue-bg w-full text-white">
-      <section
-        id="hero"
-        className="w-11/12 mx-auto p-5 sm:pt-11 max-w-[110rem] pt-36"
-      >
-        <div className="-mt-10 flex flex-col-reverse md:items-center lg:flex-row gap-10 lg:mt-10">
-          <div className="lg:w-3/5 flex flex-col gap-5">
-            <h1
-              className={`font-extrabold text-2xl sm:text-4xl xl:text-5xl ${turret.className} myShadow text-primary-heading`}
-            >
-              Abhyudaya - Coding club
-            </h1>
-            <p className="pl-4 text-base sm:text-xl ">
-              The SVITS Coding Club offers students a dynamic platform to learn,
-              practice, and excel in coding. it welcomes individuals of all
-              skill levels. Through engaging in coding competitions, hackathons,
-              and a shared passion for technology, the club transforms ideas
-              into reality. Every member, whether novice or experienced,
-              contributes and is valued, creating a welcoming space for growth,
-              knowledge-sharing, and inspiration in the exciting realm of coding
-              and technology.
-            </p>
-          </div>
-          <div className="sm:mt-5  lg:w-3/5 xl:w-2/5">
-            <video src="./intro.mp4" className="" autoPlay loop muted></video>
-          </div>
+    <main className="bg-gradient-to-b from-rich-blue-bg to-indigo-900 text-white min-h-screen">
+      <section id="hero" className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video src="./intro.mp4" className="object-cover w-full h-full" autoPlay loop muted></video>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
-        <div className="md:h-10"></div>
-        <SectionDividerLine className="" />
-      </section>
-
-      <section
-        id="domain"
-        className="relative w-11/12 mx-auto p-5  flex flex-col items-center "
-      >
-        <div className="z-10 ">
-          <h1
-            className={`text-4xl font-extrabold text-center ${turret.className}`}
-          >
-            Our Domains
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+          <h1 className={`${turret.className} text-4xl sm:text-6xl lg:text-7xl font-extrabold text-primary-heading mb-6 animate-fade-in-up`}>
+            Abhyudaya - Coding Club
           </h1>
-          <div className="flex lg:flex-col z-10 mt-10 w-full mx-auto justify-center items-center gap-5 mb-2">
-            <DomainRow domainArr={domainFirstLine} />
-            <DomainRow domainArr={domainSecondLine} />
-          </div>
+          <p className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto mb-8 animate-fade-in-up animation-delay-300">
+            Transforming ideas into reality through code, innovation, and collaboration.
+          </p>
+          <Button linkTo="#domain" text="Explore Our Domains" rounded={true} className="animate-fade-in-up animation-delay-600" />
         </div>
-        <div className="-mt-[75vh] h-[80vh] w-full blur-3xl opacity-60 bg-cyan-700 rounded-full"></div>
       </section>
 
-      <section
-        id="events"
-        className="w-10/12 mx-auto px-3 flex flex-col items-center gap-9 sm:mt-10"
-      >
-        <h1 className={`text-4xl font-extrabold ${turret.className}`}>
-          Upcoming Events
-        </h1>
-        <div className="flex justify-center text-2xl">
-          {events?.map((item) => {
-            return (
+      <section id="domain" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className={`${turret.className} text-4xl sm:text-5xl font-extrabold text-center mb-12`}>
+            Our Domains
+          </h2>
+          <div className="space-y-12">
+            <DomainRow domainArr={domainFirstLine as Domain[]} />
+            <DomainRow domainArr={domainSecondLine as Domain[]} />
+          </div>
+        </div>
+      </section>
+
+      <section id="events" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-rich-blue-bg to-indigo-900">
+        <div className="max-w-7xl mx-auto">
+          <h2 className={`${turret.className} text-4xl sm:text-5xl font-extrabold text-center mb-12 text-white`}>
+            Upcoming Events
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events?.map((item) => (
               <EventCard
-                heading={item.heading}
                 key={item.id}
+                heading={item.heading}
                 img={item.img}
                 desc={item.desc}
+                date={item.date}
+                time={item.time}
+                location={item.location}
               />
-            );
-          })}
+            ))}
+          </div>
         </div>
-        <SectionDividerLine />
       </section>
+
       <ProjectSection />
-      <SectionDividerLine />
 
-      <section
-        id="aboutCollege"
-        className=" w-10/12 mx-auto flex flex-col items-center gap-8"
-      >
-        <h1 className={`${turret?.className} font-extrabold text-4xl`}>
-          About college
-        </h1>
-        <div className="flex gap-x-20 justify-center items-center flex-wrap">
-          <div className="w-full sm:w-[45%] mb-4 border-8 overflow-hidden  rounded-3xl mt-2 ">
-            <Image src={collegeImg} alt="" className="w-full" />
-          </div>
-
-          <div className="flex flex-col gap-10 lg:w-[45%] px-4 mt-4 md:mt-0 md:px-10">
-            <h2 className={`text-2xl font-semibold `}>
-              Shri Vaishnav Vidyapeeth Vishwavidyalaya
-            </h2>
-            <p>
-              Shri Vaishnav Vidyapeeth Trust believes in taking the nation
-              forward by improving the quality of life of its citizens by
-              continuously working in the sphere of education, health and
-              environment.To create an educational environment that engages deep
-              intellectual moral and spiritual stimulation there by nurturing
-              leadership. To impact learning through understanding knowledge
-              enrichment skill development and positive attitude formation.To
-              encourage innovation thinking with self discipline & social
-              responsibility.
-            </p>
+      <section id="aboutCollege" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-100 to-purple-100">
+        <div className="max-w-7xl mx-auto">
+          <h2 className={`${turret.className} text-5xl sm:text-6xl font-extrabold text-center mb-16 text-blue-900 animate-fade-in-up`}>
+            Discover Our College
+          </h2>
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 transform hover:scale-105 transition-transform duration-300">
+              <Image 
+                src={collegeImg} 
+                alt="Shri Vaishnav Vidyapeeth Vishwavidyalaya" 
+                className="rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300" 
+              />
+            </div>
+            <div className="lg:w-1/2 space-y-8">
+              <h3 className="text-3xl font-bold text-blue-800">Shri Vaishnav Vidyapeeth Vishwavidyalaya</h3>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                At Shri Vaishnav Vidyapeeth Trust, we're committed to advancing our nation by enhancing the quality of life for all citizens. Our focus on education, health, and the environment creates a nurturing space for:
+              </p>
+              <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                <li>Deep intellectual growth</li>
+                <li>Moral and spiritual development</li>
+                <li>Leadership cultivation</li>
+                <li>Innovation with self-discipline</li>
+                <li>Social responsibility</li>
+              </ul>
+              <div className="mt-8">
+                <Button 
+                  linkTo="#" 
+                  text="Explore Our Legacy" 
+                  rounded={true} 
+                />
+              </div>
+            </div>
           </div>
         </div>
-        <SectionDividerLine />
       </section>
 
       <FacultySection faculties={collegeManagement} />
       <FacultySection faculties={coordinators} />
 
       <TeamSection team={boardMembers} />
-      <div className="flex justify-center">
-        <Button linkTo="/team" text="View more" rounded={true} />
+      <div className="flex justify-center py-8">
+        <Button linkTo="/team" text="View Full Team" rounded={true} />
       </div>
-      <SectionDividerLine />
-      <section id="faqs" className="flex flex-col items-center gap-4">
-        <h1 className={`mx-auto text-3xl font-bold ${turret.className}`}>
-          FAQs
-        </h1>
-        <Faqs />
-        <SectionDividerLine />
+
+      <section id="faqs" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900 to-purple-900">
+        <div className="max-w-3xl mx-auto">
+          <h2 className={`${turret.className} text-4xl sm:text-5xl font-extrabold text-center mb-12`}>
+            Frequently Asked Questions
+          </h2>
+          <Faqs />
+        </div>
       </section>
 
+      <footer className="bg-rich-blue-bg py-8 text-center">
+        <p>&copy; 2023 Abhyudaya Coding Club. All rights reserved.</p>
+      </footer>
     </main>
   );
 }
