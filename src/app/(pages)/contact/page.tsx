@@ -1,27 +1,20 @@
 "use client";
-import contact from "@/../public/assets/contact/contact.svg";
-import { turret } from "@/app/(pages)/page";
-import Image from "next/image";
 import React, { FormEvent, useState } from "react";
+import Image from "next/image";
+import { turret } from "@/app/(pages)/page";
+import { FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitStatus, setSubmitStatus] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitStatus("Submitting...");
-
+    setSubmitStatus("Sending...");
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -29,7 +22,7 @@ const ContactSection = () => {
 
       if (data.success) {
         setSubmitStatus("Submission successful!");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         setSubmitStatus("Submission failed. Please try again.");
       }
@@ -39,64 +32,81 @@ const ContactSection = () => {
   }
 
   return (
-    <div className="bg-rich-blue-bg text-white h-screen">
-      <section id="contact" className="flex flex-col items-center w-5/6 mx-auto gap-10 pb-8">
-        <h2 className={`${turret.className} text-4xl mt-24 sm:mt-4 font-extrabold`}>
-          Contact Us
-        </h2>
-        <div className="flex justify-center items-center w-full border-2 rounded-[16px] overflow-hidden sm:-mt-10">
-          <div className="flex flex-col py-5 w-full items-center bg-rich-blue-contactBg md:px-24 px-6">
-            <Image src={contact} height={200} className="" alt="" />
+    <div className="bg-gradient-to-br from-rich-blue-bg via-rich-blue-contactBg to-blue-900 min-h-screen text-white">
+      <div className="container mx-auto px-4 py-24">
+        <h2 className={`${turret.className} text-6xl text-center font-bold mb-16`}>Contact Us</h2>
+        
+        <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden">
+          <div className="md:flex">
+            <div className="md:w-1/2 p-12">
+              <h3 className="text-3xl font-semibold mb-8">Let's get in touch</h3>
+              <p className="mb-8 text-blue-100">We're here to help and answer any question you might have. We look forward to hearing from you!</p>
+              <div className="space-y-6 mb-8">
+                {[
+                  { icon: FiMail, text: "info@abhyudaya.com" },
+                  { icon: FiPhone, text: "+91 1234567890" },
+                  { icon: FiMapPin, text: "SVVV, Indore, MP, India" },
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center">
+                    <item.icon className="mr-4 text-2xl text-blue-300" />
+                    <span className="text-lg">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-lg overflow-hidden shadow-lg">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.3336859990286!2d75.8909!3d22.7467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd13ed2bae49%3A0xb6e8502b1c53413!2sShri%20Vaishnav%20Vidyapeeth%20Vishwavidyalaya!5e0!3m2!1sen!2sin!4v1652345678901!5m2!1sen!2sin"
+                  width="100%" 
+                  height="300" 
+                  style={{border:0}} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
             
-            <form onSubmit={onSubmit} className="flex text-[#eeeeee] flex-col gap-1 items-start">
-              <label htmlFor="name">Name</label>
-              <input
-                className="rounded-lg md:w-[288px] px-5 mb-2 py-2 bg-[#343333]"
-                type="text"
-                id="name"
-                placeholder="Rachel Joe"
-                onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                value={formData.name}
-                required
-              />
-              <label htmlFor="email">Email</label>
-              <input
-                className="rounded-lg px-5 md:w-[288px] mb-2 py-2 bg-[#343333]"
-                type="email"
-                id="email"
-                placeholder="Rachel@domain.com"
-                onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                value={formData.email}
-                required
-              />
-              <label htmlFor="message">Message</label>
-              <textarea
-                className="rounded-lg w-full px-5 mb-2 py-2 resize-none bg-[#343333]"
-                id="message"
-                placeholder="Type your query here"
-                rows={3}
-                cols={18}
-                onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-                value={formData.message}
-                required
-              />
-              <button type="submit" className="bg-[#6088EE] py-2 my-2 px-10 flex gap-2">
-                Send Message
-              </button>
-              {submitStatus && <p className="text-sm mt-2">{submitStatus}</p>}
-            </form>
-          </div>
-          <div className="lg:block hidden w-1/2 h-[550px] px-2">
-            <iframe 
-              className='rounded-2xl' 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117676.79402006012!2d75.70263912955559!3d22.824693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3963039c587a8091%3A0x206d00d7a5e4afb3!2sSVVV!5e0!3m2!1sen!2sin!4v1720799469416!5m2!1sen!2sin" 
-              width="600" 
-              height="550"  
-              loading="lazy" 
-            ></iframe>
+            <div className="md:w-1/2 bg-blue-600 p-12">
+              <h4 className="text-2xl font-semibold mb-8">Send us a message</h4>
+              <form onSubmit={onSubmit} className="space-y-6">
+                {[
+                  { name: 'name', type: 'text', placeholder: 'Your Name' },
+                  { name: 'email', type: 'email', placeholder: 'Your Email' },
+                  { name: 'subject', type: 'text', placeholder: 'Subject' },
+                  { name: 'message', type: 'textarea', placeholder: 'Your Message' },
+                ].map((field) => (
+                  <div key={field.name}>
+                    {field.type === 'textarea' ? (
+                      <textarea
+                        placeholder={field.placeholder}
+                        className="w-full px-4 py-3 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-white/60 resize-none"
+                        rows={4}
+                        onChange={(e) => setFormData((prev) => ({ ...prev, [field.name]: e.target.value }))}
+                        value={formData[field.name as keyof typeof formData]}
+                        required
+                      />
+                    ) : (
+                      <input
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        className="w-full px-4 py-3 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-white/60"
+                        onChange={(e) => setFormData((prev) => ({ ...prev, [field.name]: e.target.value }))}
+                        value={formData[field.name as keyof typeof formData]}
+                        required
+                      />
+                    )}
+                  </div>
+                ))}
+                <button type="submit" className="w-full bg-white text-blue-600 hover:bg-blue-100 transition duration-300 py-3 rounded-lg font-semibold text-lg flex items-center justify-center">
+                  <FiSend className="mr-2" />
+                  Send Message
+                </button>
+              </form>
+              {submitStatus && <p className="mt-4 text-center text-sm">{submitStatus}</p>}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
